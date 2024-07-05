@@ -6,7 +6,6 @@
  * 
  */
 
-
 package com.example.employee;
 
 import com.example.employee.Employee;
@@ -43,6 +42,7 @@ public class EmployeeService implements EmployeeRepository {
         ArrayList<Employee> employees = new ArrayList<>(employeeCollection);
         return employees;
     }
+
     @Override
     public Employee addEmployee(Employee employee) {
         employee.setEmployeeId(uniqueId);
@@ -50,19 +50,20 @@ public class EmployeeService implements EmployeeRepository {
         uniqueId++;
         return employee;
     }
+
     @Override
     public Employee updateEmployee(int employeeId, Employee employee) {
         Employee existingEmployee = employeeList.get(employeeId);
         if (existingEmployee == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
-        if(employee.getEmployeeName() != null) {
+        if (employee.getEmployeeName() != null) {
             existingEmployee.setEmployeeName(employee.getEmployeeName());
         }
-        if(employee.getDepartment()!= null) {
+        if (employee.getDepartment() != null) {
             existingEmployee.setDepartment(employee.getDepartment());
         }
-        if(employee.getEmail() != null) {
+        if (employee.getEmail() != null) {
             existingEmployee.setEmail(employee.getEmail());
         }
 
@@ -83,11 +84,10 @@ public class EmployeeService implements EmployeeRepository {
         Employee employee = employeeList.get(employeeId);
         if (employee == null) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
-        }
-        else {
+        } else {
             employeeList.remove(employeeId);
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT);
         }
     }
 
-    
 }

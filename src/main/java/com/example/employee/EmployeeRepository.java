@@ -8,9 +8,13 @@ import java.util.ArrayList;
  */
 public interface EmployeeRepository {
     ArrayList<Employee> getEmployees();
+
     Employee getEmployeeById(int employeeId);
+
     Employee updateEmployee(int employeeId, Employee employee);
+
     Employee addEmployee(Employee employee);
+
     void deleteEmployee(int employeeId);
 
 }
