@@ -7,3 +7,14 @@
  */
 
 // Write your code here
+import org.springframework.web.bind.annotation.*;
+package com.example.employee;
+
+/**
+ * EmployeeController
+ */
+@RestController
+public class EmployeeController {
+    
+    
+}
