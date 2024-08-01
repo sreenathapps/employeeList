@@ -5,6 +5,7 @@ import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
 import com.example.employee.model.Employee;
@@ -14,6 +15,7 @@ import com.example.employee.repository.EmployeeRepository;
 /**
  * EmployeeJpaService
  */
+@Service
 public class EmployeeJpaService implements EmployeeRepository{
 
     @Autowired EmployeeJpaRepository employeeJpaRepository;
