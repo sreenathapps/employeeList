@@ -1,7 +1,6 @@
 package com.example.employee.service;
 
 import java.util.List;
-import java.util.NoSuchElementException;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -16,9 +15,10 @@ import com.example.employee.repository.EmployeeRepository;
  * EmployeeJpaService
  */
 @Service
-public class EmployeeJpaService implements EmployeeRepository{
+public class EmployeeJpaService implements EmployeeRepository {
 
-    @Autowired EmployeeJpaRepository employeeJpaRepository;
+    @Autowired
+    EmployeeJpaRepository employeeJpaRepository;
 
     @Override
     public List<Employee> getEmployees() {
@@ -37,10 +37,10 @@ public class EmployeeJpaService implements EmployeeRepository{
     public Employee updatEmployee(int employeeId, Employee employee) {
         try {
             Employee newEmployee = employeeJpaRepository.findById(employeeId).get();
-            if (employee.getEmployeeName()!= null) {
+            if (employee.getEmployeeName() != null) {
                 newEmployee.setEmployeeName(employee.getEmployeeName());
             }
-            if (employee.getEmail()!= null) {
+            if (employee.getEmail() != null) {
                 newEmployee.setEmail(employee.getEmail());
             }
             if (employee.getDepartment() != null) {
@@ -66,8 +66,7 @@ public class EmployeeJpaService implements EmployeeRepository{
     public void deleteEmployee(int employeeId) {
         try {
             employeeJpaRepository.deleteById(employeeId);
-            throw new ResponseStatusException(HttpStatus.OK);
-        } catch (NoSuchElementException e) {
+        } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
     }
