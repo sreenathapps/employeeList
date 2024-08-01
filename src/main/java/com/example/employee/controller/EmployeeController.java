@@ -15,38 +15,38 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PutMapping;
 
-
-
-
 /**
  * EmployeeController
  */
 @RestController
 public class EmployeeController {
 
-    @Autowired 
+    @Autowired
     private EmployeeJpaService employeeJpaService;
 
     @GetMapping("/employees")
     public List<Employee> getEmployees() {
         return employeeJpaService.getEmployees();
     }
+
     @PostMapping("/employees")
     public Employee addEmployee(@RequestBody Employee employee) {
         return employeeJpaService.addEmployee(employee);
     }
+
     @GetMapping("/employees/{employeeId}")
     public Employee getEmployee(@PathVariable("employeeId") int employeeId) {
         return employeeJpaService.getEmployeeById(employeeId);
     }
+
     @PutMapping("/employees/{employeeId}")
     public Employee updatEmployee(@PathVariable int employeeId, @RequestBody Employee employee) {
         return employeeJpaService.updatEmployee(employeeId, employee);
     }
+
     @DeleteMapping("/employees/{employeeId}")
     public void deleteEmployee(@PathVariable int employeeId) {
         employeeJpaService.deleteEmployee(employeeId);
     }
-    
-    
+
 }
